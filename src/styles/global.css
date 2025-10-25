@@ -68,7 +68,7 @@ p {
   );
   color: var(--white);
   padding: 0.3rem 0.5rem;
-  display: block;
+  display: inline-block;
   margin-bottom: 1rem;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -96,6 +96,7 @@ li {
   color: var(--white);
   padding: 0.3rem 0.5rem;
   margin-bottom: 1rem;
+  display: inline-block;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
@@ -251,8 +252,10 @@ footer p {
   );
   color: var(--white);
   padding: 0.3rem 0.5rem;
-  display: block;
+  display: inline-block;
   margin-bottom: 1rem;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 footer a {
