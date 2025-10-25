@@ -259,12 +259,12 @@ footer a {
   color: var(--jet);
 }
 
-/* Background sketches with overlapping effect */
+/* Background sketches with jaunty angles and fixed positioning */
 .container::before {
   content: '';
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: fixed;
+  top: 30px;
+  left: 30px;
   width: 100px;
   height: 100px;
   background-image: url('/sketches/dna.png');
@@ -272,15 +272,16 @@ footer a {
   background-repeat: no-repeat;
   pointer-events: none;
   user-select: none;
-  opacity: 0.3;
+  opacity: 1;
   z-index: -1;
+  transform: rotate(-15deg);
 }
 
 .container::after {
   content: '';
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
   width: 120px;
   height: 120px;
   background-image: url('/sketches/microscope.png');
@@ -288,8 +289,9 @@ footer a {
   background-repeat: no-repeat;
   pointer-events: none;
   user-select: none;
-  opacity: 0.3;
+  opacity: 1;
   z-index: -1;
+  transform: rotate(12deg);
 }
 
 /* Add mask sketch using a pseudo-element on the body */
@@ -297,7 +299,7 @@ body::after {
   content: '';
   position: fixed;
   top: 50%;
-  right: 50px;
+  right: 40px;
   width: 80px;
   height: 80px;
   background-image: url('/sketches/mask.png');
@@ -305,7 +307,7 @@ body::after {
   background-repeat: no-repeat;
   pointer-events: none;
   user-select: none;
-  opacity: 0.25;
+  opacity: 1;
   z-index: -1;
-  transform: translateY(-50%);
+  transform: translateY(-50%) rotate(-8deg);
 }
