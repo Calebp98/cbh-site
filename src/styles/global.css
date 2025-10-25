@@ -417,7 +417,7 @@ footer a {
   left: 400px;
   width: 100px;
   height: 100px;
-  background-image: url('/sketches/dna.png');
+  background-image: url('/cbh-site/sketches/dna.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -434,7 +434,7 @@ footer a {
   right: -30px;
   width: 120px;
   height: 120px;
-  background-image: url('/sketches/microscope.png');
+  background-image: url('/cbh-site/sketches/microscope.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -451,7 +451,7 @@ footer a {
   right: 300px;
   width: 80px;
   height: 80px;
-  background-image: url('/sketches/mask.png');
+  background-image: url('/cbh-site/sketches/mask.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -468,7 +468,7 @@ footer a {
   left: -30px;
   width: 90px;
   height: 90px;
-  background-image: url('/sketches/far-uvc.png');
+  background-image: url('/cbh-site/sketches/far-uvc.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -484,7 +484,7 @@ footer a {
   left: 600px;
   width: 100px;
   height: 100px;
-  background-image: url('/sketches/lab_robot.png');
+  background-image: url('/cbh-site/sketches/lab_robot.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -500,7 +500,7 @@ footer a {
   right: -20px;
   width: 70px;
   height: 70px;
-  background-image: url('/sketches/pipette.png');
+  background-image: url('/cbh-site/sketches/pipette.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -516,7 +516,7 @@ footer a {
   right: 500px;
   width: 85px;
   height: 85px;
-  background-image: url('/sketches/blood_cells.png');
+  background-image: url('/cbh-site/sketches/blood_cells.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -532,7 +532,7 @@ footer a {
   right: -30px;
   width: 75px;
   height: 75px;
-  background-image: url('/sketches/chromosone.png');
+  background-image: url('/cbh-site/sketches/chromosone.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -548,7 +548,7 @@ footer a {
   left: -40px;
   width: 95px;
   height: 95px;
-  background-image: url('/sketches/crispr.png');
+  background-image: url('/cbh-site/sketches/crispr.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -564,7 +564,7 @@ footer a {
   left: -25px;
   width: 80px;
   height: 80px;
-  background-image: url('/sketches/lab_coat.png');
+  background-image: url('/cbh-site/sketches/lab_coat.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -580,7 +580,7 @@ footer a {
   left: 505px;
   width: 90px;
   height: 90px;
-  background-image: url('/sketches/sequencer.png');
+  background-image: url('/cbh-site/sketches/sequencer.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -596,7 +596,7 @@ footer a {
   left: -45px;
   width: 70px;
   height: 70px;
-  background-image: url('/sketches/test_tubes.png');
+  background-image: url('/cbh-site/sketches/test_tubes.png');
   background-size: contain;
   background-repeat: no-repeat;
   pointer-events: none;
