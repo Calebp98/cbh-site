@@ -50,7 +50,7 @@ body::before {
   margin: 0 auto;
   padding: 2rem;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Highlighter/washi tape effect */
@@ -163,6 +163,8 @@ header {
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
+  border: 3px dashed #feca57;
+  padding: 0.5rem 0.7rem;
 }
 
 .tagline {
@@ -170,8 +172,72 @@ h1 {
   color: #FFFFFF;
 }
 
+/* Typing animation styles */
+.typing-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  min-height: 2rem;
+}
+
+.typing-text {
+  background: none;
+  color: var(--jet);
+  padding: 0;
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+.cursor {
+  color: var(--jet);
+  font-size: 1.2rem;
+  font-weight: bold;
+  animation: blink 0.8s infinite;
+  margin-left: 3px;
+  background: none;
+  padding: 0;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Base pair colors */
+.base-a {
+  color: #ff6b6b; /* Red for Adenine */
+  font-weight: bold;
+}
+
+.base-c {
+  color: #4ecdc4; /* Teal for Cytosine */
+  font-weight: bold;
+}
+
+.base-g {
+  color: #45b7d1; /* Blue for Guanine */
+  font-weight: bold;
+}
+
+.base-t {
+  color: #96ceb4; /* Green for Thymine */
+  font-weight: bold;
+}
+
+.base-u {
+  color: #feca57; /* Yellow for Uracil */
+  font-weight: bold;
+}
+
 section {
   margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
 }
 
 h2 {
@@ -219,6 +285,8 @@ li {
   display: block;
   margin-bottom: 0.5rem;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .profile-image {
@@ -231,6 +299,82 @@ li {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+/* Speech bubble styles */
+.speech-bubble {
+  position: fixed;
+  background: var(--white);
+  border: 2px solid var(--caribbean-current);
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 250px;
+  min-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--jet);
+}
+
+/* Speech bubble tail */
+.speech-bubble::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+/* Tail pointing right (default) */
+.speech-bubble.tail-right::before {
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 12px 12px 12px 0;
+  border-color: transparent var(--caribbean-current) transparent transparent;
+}
+
+.speech-bubble.tail-right::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent var(--white) transparent transparent;
+}
+
+/* Tail pointing left */
+.speech-bubble.tail-left::before {
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 12px 0 12px 12px;
+  border-color: transparent transparent transparent var(--caribbean-current);
+}
+
+.speech-bubble.tail-left::after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent var(--white);
 }
 
 footer {
@@ -269,8 +413,8 @@ footer a {
 .container::before {
   content: '';
   position: absolute;
-  top: 200px;
-  left: 30px;
+  top: 150px;
+  left: 400px;
   width: 100px;
   height: 100px;
   background-image: url('/sketches/dna.png');
@@ -278,16 +422,16 @@ footer a {
   background-repeat: no-repeat;
   pointer-events: none;
   user-select: none;
-  opacity: 1;
-  z-index: -1;
+  opacity: 0.7;
+  z-index: 1;
   transform: rotate(-15deg);
 }
 
 .container::after {
   content: '';
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 50px;
+  right: -30px;
   width: 120px;
   height: 120px;
   background-image: url('/sketches/microscope.png');
@@ -295,17 +439,16 @@ footer a {
   background-repeat: no-repeat;
   pointer-events: none;
   user-select: none;
-  opacity: 1;
-  z-index: -1;
+  opacity: 0.7;
+  z-index: 1;
   transform: rotate(12deg);
 }
 
-/* Add mask sketch using a pseudo-element on the body */
-body::after {
-  content: '';
+/* Mask sketch as a separate element */
+.mask-sketch {
   position: absolute;
-  top: 50vh;
-  right: 40px;
+  top: 410px;
+  right: 300px;
   width: 80px;
   height: 80px;
   background-image: url('/sketches/mask.png');
@@ -313,10 +456,156 @@ body::after {
   background-repeat: no-repeat;
   pointer-events: none;
   user-select: none;
-  opacity: 1;
-  z-index: -1;
-  transform: translateY(-50%) rotate(-8deg);
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(-8deg);
 }
+
+/* Additional sketches */
+.far-uvc-sketch {
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  width: 90px;
+  height: 90px;
+  background-image: url('/sketches/far-uvc.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(20deg);
+}
+
+.lab-robot-sketch {
+  position: absolute;
+  top: 1000px;
+  left: 600px;
+  width: 100px;
+  height: 100px;
+  background-image: url('/sketches/lab_robot.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(-25deg);
+}
+
+.pipette-sketch {
+  position: absolute;
+  top: 400px;
+  right: -20px;
+  width: 70px;
+  height: 70px;
+  background-image: url('/sketches/pipette.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(15deg);
+}
+
+.blood-cells-sketch {
+  position: absolute;
+  top: 1600px;
+  right: 500px;
+  width: 85px;
+  height: 85px;
+  background-image: url('/sketches/blood_cells.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(-12deg);
+}
+
+.chromosone-sketch {
+  position: absolute;
+  top: 800px;
+  right: -30px;
+  width: 75px;
+  height: 75px;
+  background-image: url('/sketches/chromosone.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(18deg);
+}
+
+.crispr-sketch {
+  position: absolute;
+  top: 600px;
+  left: -40px;
+  width: 95px;
+  height: 95px;
+  background-image: url('/sketches/crispr.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(-20deg);
+}
+
+.lab-coat-sketch {
+  position: absolute;
+  top: 900px;
+  left: -25px;
+  width: 80px;
+  height: 80px;
+  background-image: url('/sketches/lab_coat.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(10deg);
+}
+
+.sequencer-sketch {
+  position: absolute;
+  top: 1800px;
+  left: 505px;
+  width: 90px;
+  height: 90px;
+  background-image: url('/sketches/sequencer.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(25deg);
+}
+
+.test-tubes-sketch {
+  position: absolute;
+  top: 1750px;
+  left: -45px;
+  width: 70px;
+  height: 70px;
+  background-image: url('/sketches/test_tubes.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.7;
+  z-index: 1;
+  transform: rotate(-18deg);
+}
+
 
 /* Project Cards Styles */
 .projects-grid {
@@ -334,6 +623,8 @@ body::after {
   transition: all 0.3s ease;
   cursor: pointer;
   border: 2px solid transparent;
+  position: relative;
+  z-index: 3;
 }
 
 .project-card:hover {
@@ -489,5 +780,42 @@ body::after {
   
   .project-content p:last-child {
     margin-bottom: 1rem;
+  }
+
+  /* Speech bubble responsive adjustments */
+  .speech-bubble {
+    max-width: 200px;
+    min-width: 150px;
+    font-size: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .team {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+
+  .profile-image {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .speech-bubble {
+    max-width: 180px;
+    min-width: 120px;
+    font-size: 0.75rem;
+    padding: 0.6rem;
+  }
+
+  .team {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .profile-image {
+    width: 100px;
+    height: 100px;
   }
 }

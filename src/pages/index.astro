@@ -12,13 +12,22 @@ const currentYear = new Date().getFullYear();
 
   <body>
     <div class="container">
+      <div class="mask-sketch"></div>
+      <div class="far-uvc-sketch"></div>
+      <div class="lab-robot-sketch"></div>
+      <div class="pipette-sketch"></div>
+      <div class="blood-cells-sketch"></div>
+      <div class="chromosone-sketch"></div>
+      <div class="crispr-sketch"></div>
+      <div class="lab-coat-sketch"></div>
+      <div class="sequencer-sketch"></div>
+      <div class="test-tubes-sketch"></div>
       <header>
-        <h1>Cambridge Biosecurity Hub</h1>
-        <p class="tagline">Safeguarding Biological Research.</p>
-        <p class="tagline">
-          Working to usher in a future of safe and transformative
-          biotechnologies.
-        </p>
+        <h1 id="title-text">Cambridge Biosecurity Hub</h1>
+        <div class="typing-container">
+          <span class="typing-text"></span>
+          <span class="cursor">|</span>
+        </div>
       </header>
 
       <section>
@@ -129,6 +138,7 @@ const currentYear = new Date().getFullYear();
               src="/profile_pics/grace.webp"
               alt="Grace Braithwaite"
               class="profile-image"
+              data-bio="Grace is a medical doctor with a masters in public health. She now runs Cambridge Biosecurity Hub fulltime."
             />
             <p>Founder</p>
           </div>
@@ -138,6 +148,7 @@ const currentYear = new Date().getFullYear();
               src="/profile_pics/sandy.webp"
               alt="Sandy Hickson"
               class="profile-image"
+              data-bio="Sandy is a PhD student in genetics and bioinformatics at the University of Cambridge."
             />
             <p>Founder</p>
           </div>
@@ -147,6 +158,7 @@ const currentYear = new Date().getFullYear();
               src="/profile_pics/phil.webp"
               alt="Phil Palmer"
               class="profile-image"
+              data-bio="Phil has a PhD in bioinformatics from the University of Cambridge."
             />
             <p>Research Lead</p>
           </div>
@@ -156,6 +168,7 @@ const currentYear = new Date().getFullYear();
               src="/profile_pics/richard.webp"
               alt="Richard Moulange"
               class="profile-image"
+              data-bio="Richard has a PhD in machine learning from the University of Cambridge, and works on AIxBio Policy at the Centre for Long-Term Resilience - a think tank based in London."
             />
             <p>Research Affiliate</p>
           </div>
@@ -181,6 +194,175 @@ const currentYear = new Date().getFullYear();
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // DNA Transcription animation for all headers
+        const headers = document.querySelectorAll(
+          "h1, h2, h3"
+        ) as NodeListOf<HTMLElement>;
+        const dnaBases = ["A", "C", "G", "T"];
+        const rnaBases = ["A", "C", "G", "U"];
+
+        let headerAnimations: Array<{
+          element: HTMLElement;
+          targetText: string;
+          currentSequence: string[];
+          targetChars: string[];
+          animationIndex: number;
+        }> = [];
+
+        // Initialize animations for each header
+        headers.forEach((header, index) => {
+          const targetText = header.textContent || "";
+          headerAnimations.push({
+            element: header,
+            targetText: targetText,
+            currentSequence: [],
+            targetChars: targetText.split(""),
+            animationIndex: 0,
+          });
+        });
+
+        let titleAnimationSpeed = 250; // More movement - changes every 250ms (4 times per second)
+
+        function generateRandomSequence(
+          targetText: string,
+          bases: string[]
+        ): string[] {
+          return targetText.split("").map((char) => {
+            if (char === " ") {
+              return " "; // Keep spaces as spaces
+            }
+            return bases[Math.floor(Math.random() * bases.length)];
+          });
+        }
+
+        function wrapBasesWithColors(sequence: string[]): string {
+          return sequence
+            .map((base) => {
+              if (base === " ") {
+                return " "; // Keep spaces as plain spaces
+              }
+              const className = `base-${base.toLowerCase()}`;
+              return `<span class="${className}">${base}</span>`;
+            })
+            .join("");
+        }
+
+        function dnaTranscription() {
+          let allComplete = true;
+
+          headerAnimations.forEach((animation, headerIndex) => {
+            const { element, targetText, targetChars } = animation;
+
+            if (animation.animationIndex === 0) {
+              // Start with DNA sequence
+              animation.currentSequence = generateRandomSequence(
+                targetText,
+                dnaBases
+              );
+              element.innerHTML = wrapBasesWithColors(
+                animation.currentSequence
+              );
+            } else if (animation.animationIndex === 1) {
+              // Another DNA sequence variation
+              animation.currentSequence = generateRandomSequence(
+                targetText,
+                dnaBases
+              );
+              element.innerHTML = wrapBasesWithColors(
+                animation.currentSequence
+              );
+            } else if (animation.animationIndex === 2) {
+              // Convert to RNA
+              animation.currentSequence = animation.currentSequence.map(
+                (base) => (base === "T" ? "U" : base)
+              );
+              element.innerHTML = wrapBasesWithColors(
+                animation.currentSequence
+              );
+            } else if (animation.animationIndex === 3) {
+              // Another RNA variation
+              animation.currentSequence = generateRandomSequence(
+                targetText,
+                rnaBases
+              );
+              element.innerHTML = wrapBasesWithColors(
+                animation.currentSequence
+              );
+            } else if (animation.animationIndex === 4) {
+              // Start introducing target characters
+              const halfLength = Math.floor(targetChars.length / 2);
+              for (let i = 0; i < halfLength; i++) {
+                const randomIndex = Math.floor(
+                  Math.random() * animation.currentSequence.length
+                );
+                animation.currentSequence[randomIndex] =
+                  targetChars[randomIndex];
+              }
+              element.innerHTML = wrapBasesWithColors(
+                animation.currentSequence
+              );
+            } else if (animation.animationIndex === 5) {
+              // Final result
+              element.textContent = targetText;
+              return; // This header is complete
+            }
+
+            animation.animationIndex++;
+            allComplete = false;
+          });
+
+          if (!allComplete) {
+            setTimeout(dnaTranscription, titleAnimationSpeed);
+          }
+        }
+
+        // Start DNA transcription animation for all headers
+        dnaTranscription();
+
+        // Typing animation for slogan
+        const typingText = document.querySelector(
+          ".typing-text"
+        ) as HTMLElement;
+        const texts = [
+          "Safeguarding Biological Research.",
+          "Working to usher in a future of safe and transformative biotechnologies.",
+        ];
+
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 33; // 3x faster (100ms -> 33ms)
+        let deleteSpeed = 16; // 3x faster (50ms -> 16ms)
+        let pauseTime = 3000; // 3x longer pause before deleting
+
+        function typeText() {
+          const currentText = texts[textIndex];
+
+          if (isDeleting) {
+            // Delete entire line at once
+            typingText.textContent = "";
+            charIndex = 0;
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typingSpeed = 200; // Short pause before next text
+          } else {
+            typingText.textContent = currentText.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 33; // Fast typing
+          }
+
+          if (!isDeleting && charIndex === currentText.length) {
+            typingSpeed = pauseTime;
+            isDeleting = true;
+          }
+
+          setTimeout(typeText, typingSpeed);
+        }
+
+        // Start typing animation for slogan
+        typeText();
+
+        // Project cards functionality
         const projectCards = document.querySelectorAll(".project-card");
 
         projectCards.forEach((card) => {
@@ -202,6 +384,97 @@ const currentYear = new Date().getFullYear();
             }
           });
         });
+
+        // Speech bubble functionality for team members
+        const profileImages = document.querySelectorAll(".profile-image");
+        let currentBubble: HTMLElement | null = null;
+
+        function removeCurrentBubble() {
+          if (currentBubble) {
+            currentBubble.remove();
+            currentBubble = null;
+          }
+        }
+
+        function positionBubble(bubble: HTMLElement, imgRect: DOMRect) {
+          const viewportWidth = window.innerWidth;
+          const viewportHeight = window.innerHeight;
+          const margin = 20;
+
+          // Get actual bubble dimensions after it's rendered
+          const bubbleRect = bubble.getBoundingClientRect();
+          const bubbleWidth = bubbleRect.width;
+          const bubbleHeight = bubbleRect.height;
+
+          // Determine horizontal position
+          const spaceOnRight = viewportWidth - imgRect.right;
+          const showOnRight = spaceOnRight >= bubbleWidth + margin;
+
+          // Position horizontally
+          if (showOnRight) {
+            bubble.classList.add("tail-right");
+            bubble.classList.remove("tail-left");
+            bubble.style.left = `${imgRect.right + 10}px`;
+          } else {
+            bubble.classList.add("tail-left");
+            bubble.classList.remove("tail-right");
+            bubble.style.left = `${Math.max(margin, imgRect.left - bubbleWidth - 10)}px`;
+          }
+
+          // Position vertically - center relative to image, but keep within viewport
+          let topPosition = imgRect.top + imgRect.height / 2 - bubbleHeight / 2;
+
+          // Ensure bubble doesn't go above viewport
+          if (topPosition < margin) {
+            topPosition = margin;
+          }
+
+          // Ensure bubble doesn't go below viewport
+          if (topPosition + bubbleHeight > viewportHeight - margin) {
+            topPosition = viewportHeight - bubbleHeight - margin;
+          }
+
+          bubble.style.top = `${topPosition}px`;
+        }
+
+        profileImages.forEach((image) => {
+          const img = image as HTMLImageElement;
+          const bio = img.getAttribute("data-bio");
+
+          if (!bio) return;
+
+          img.addEventListener("mouseenter", function () {
+            // Remove any existing bubble
+            removeCurrentBubble();
+
+            // Create new speech bubble
+            const bubble = document.createElement("div");
+            bubble.className = "speech-bubble";
+            bubble.textContent = bio;
+
+            // Add bubble to body for proper positioning
+            document.body.appendChild(bubble);
+
+            // Get image position
+            const imgRect = img.getBoundingClientRect();
+
+            // Position bubble
+            positionBubble(bubble, imgRect);
+
+            currentBubble = bubble;
+          });
+
+          img.addEventListener("mouseleave", function () {
+            removeCurrentBubble();
+          });
+
+          // Remove bubble on scroll or resize
+          img.addEventListener("scroll", removeCurrentBubble);
+        });
+
+        // Remove bubble on window resize or scroll
+        window.addEventListener("resize", removeCurrentBubble);
+        window.addEventListener("scroll", removeCurrentBubble);
       });
     </script>
   </body>
