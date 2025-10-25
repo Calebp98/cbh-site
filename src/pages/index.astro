@@ -1,16 +1,208 @@
 ---
-
+import "../styles/global.css";
+const currentYear = new Date().getFullYear();
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Cambridge Biosecurity Hub</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>Cambridge Biosecurity Hub</h1>
+        <p class="tagline">Safeguarding Biological Research.</p>
+        <p class="tagline">
+          Working to usher in a future of safe and transformative
+          biotechnologies.
+        </p>
+      </header>
+
+      <section>
+        <h2>About CBH</h2>
+        <p>
+          The Cambridge Biosecurity Hub (CBH) is a team of researchers
+          investigating and raising awareness of the risks associated with
+          rapidly developing biotechnologies. Our projects aim to make progress
+          on both technical and policy issues within biosecurity.
+        </p>
+      </section>
+
+      <section>
+        <h2>Current Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card" data-color="coral-red">
+            <div class="project-header">
+              <h4>AIxBio Fellowship</h4>
+              <button class="expand-btn" aria-label="Expand project details">
+                <span class="expand-icon">+</span>
+              </button>
+            </div>
+            <div class="project-content">
+              <p>
+                <strong
+                  >CBH is collaborating with ERA to run the first AIxBio
+                  Fellowship</strong
+                >
+              </p>
+              <p>
+                It is an 8-week, fully funded research fellowship at Cambridge,
+                UK, from January 26 - March 20, 2026.
+              </p>
+              <p>
+                Our aim is for fellows to work on concrete projects mitigating
+                biosecurity risks, including those amplified by frontier AI.
+              </p>
+              <p>
+                For more information visit <a href="https://aixbiosecurity.com"
+                  >aixbiosecurity.com</a
+                >
+              </p>
+              <p>
+                <strong>Applications for fellows close November 5th</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Previous Projects:</h3>
+        <div class="projects-grid">
+          <div class="project-card" data-color="sage-green">
+            <div class="project-header">
+              <h4>Biosecurity Fundamentals Reading Groups</h4>
+              <button class="expand-btn" aria-label="Expand project details">
+                <span class="expand-icon">+</span>
+              </button>
+            </div>
+            <div class="project-content">
+              <p>
+                In-person reading groups focused on fundamental biosecurity
+                concepts and research.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-card" data-color="burnt-orange">
+            <div class="project-header">
+              <h4>Biosecurity Research Sprints</h4>
+              <button class="expand-btn" aria-label="Expand project details">
+                <span class="expand-icon">+</span>
+              </button>
+            </div>
+            <div class="project-content">
+              <p>
+                Intensive research sprints tackling specific biosecurity
+                challenges and policy issues.
+              </p>
+            </div>
+          </div>
+
+          <div class="project-card" data-color="deep-purple">
+            <div class="project-header">
+              <h4>Cambridge Pandemic Prevention Symposium</h4>
+              <button class="expand-btn" aria-label="Expand project details">
+                <span class="expand-icon">+</span>
+              </button>
+            </div>
+            <div class="project-content">
+              <p>
+                The Cambridge Pandemic Prevention Symposium was held at Jesus
+                College on 7th October 2024. We had >100 attendees and a series
+                of impressive speakers including Dr Cassidy Nelson (CLTR), Dr
+                Ewan Harrison (University of Cambridge), Dr Nicole Wheeler
+                (University of Birmingham) and Dr Sana Zakaria (RAND Europe).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Meet the Team</h2>
+        <div class="team">
+          <div class="team-member">
+            <h3>Dr Grace Braithwaite</h3>
+            <img
+              src="/profile_pics/grace.webp"
+              alt="Grace Braithwaite"
+              class="profile-image"
+            />
+            <p>Founder</p>
+          </div>
+          <div class="team-member">
+            <h3>Sandy Hickson</h3>
+            <img
+              src="/profile_pics/sandy.webp"
+              alt="Sandy Hickson"
+              class="profile-image"
+            />
+            <p>Founder</p>
+          </div>
+          <div class="team-member">
+            <h3>Dr Phil Palmer</h3>
+            <img
+              src="/profile_pics/phil.webp"
+              alt="Phil Palmer"
+              class="profile-image"
+            />
+            <p>Research Lead</p>
+          </div>
+          <div class="team-member">
+            <h3>Dr Richard Moulange</h3>
+            <img
+              src="/profile_pics/richard.webp"
+              alt="Richard Moulange"
+              class="profile-image"
+            />
+            <p>Research Affiliate</p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          CBH is a project of the community interest company registered as
+          Meridian Impact CIC at Companies House (company number 13653958).
+        </p>
+        <p>
+          © {currentYear}, Cambridge Biosecurity Hub / Meridian CIC. All rights
+          reserved.
+        </p>
+        <p>
+          <a href="#">Code of Conduct</a> | <a href="#"
+            >Community Health reporting form</a
+          >
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const projectCards = document.querySelectorAll(".project-card");
+
+        projectCards.forEach((card) => {
+          card.addEventListener("click", function (event) {
+            const target = event.target as HTMLElement;
+            const content = card.querySelector(
+              ".project-content"
+            ) as HTMLElement;
+            const icon = card.querySelector(".expand-icon") as HTMLElement;
+
+            card.classList.toggle("expanded");
+
+            if (card.classList.contains("expanded")) {
+              icon.textContent = "−";
+              content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+              icon.textContent = "+";
+              content.style.maxHeight = "0";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
 </html>
