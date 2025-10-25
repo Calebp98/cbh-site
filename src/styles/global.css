@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
 
 :root {
-  --barn-red: #780000ff;
-  --fire-brick: #c1121fff;
-  --papaya-whip: #fdf0d5ff;
-  --prussian-blue: #003049ff;
-  --air-superiority-blue: #669bbcff;
+  --jet: #353535ff;
+  --caribbean-current: #3c6e71ff;
+  --white: #ffffffff;
+  --platinum: #d9d9d9ff;
+  --indigo-dye: #284b63ff;
 }
 
 * {
@@ -18,8 +18,8 @@ body {
   font-family: 'Inconsolata', monospace;
   
   line-height: 1.8;
-  color: var(--prussian-blue);
-  background: linear-gradient(to bottom, var(--papaya-whip) 0%, var(--papaya-whip) 100%);
+  color: var(--jet);
+  background: linear-gradient(to bottom, var(--white) 0%, var(--white) 100%);
   position: relative;
 }
 
@@ -31,8 +31,8 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(rgba(0, 48, 73, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 48, 73, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(40, 75, 99, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40, 75, 99, 0.05) 1px, transparent 1px);
   background-size: 30px 30px;
   pointer-events: none;
   z-index: 0;
@@ -50,21 +50,21 @@ body::before {
 p {
   background: linear-gradient(
     104deg,
-    rgba(102, 155, 188, 0) 0.9%,
-    rgba(102, 155, 188, 0.5) 2.4%,
-    rgba(102, 155, 188, 0.5) 5.8%,
-    rgba(102, 155, 188, 0.4) 93%,
-    rgba(102, 155, 188, 0.5) 96%,
-    rgba(102, 155, 188, 0) 98%
+    rgba(60, 110, 113, 0) 0.9%,
+    rgba(60, 110, 113, 0.5) 2.4%,
+    rgba(60, 110, 113, 0.5) 5.8%,
+    rgba(60, 110, 113, 0.4) 93%,
+    rgba(60, 110, 113, 0.5) 96%,
+    rgba(60, 110, 113, 0) 98%
   ),
   linear-gradient(
     183deg,
-    rgba(102, 155, 188, 0) 0%,
-    rgba(102, 155, 188, 0.4) 7.9%,
-    rgba(102, 155, 188, 0.4) 15%,
-    rgba(102, 155, 188, 0.4) 78%,
-    rgba(102, 155, 188, 0.4) 94%,
-    rgba(102, 155, 188, 0) 100%
+    rgba(60, 110, 113, 0) 0%,
+    rgba(60, 110, 113, 0.4) 7.9%,
+    rgba(60, 110, 113, 0.4) 15%,
+    rgba(60, 110, 113, 0.4) 78%,
+    rgba(60, 110, 113, 0.4) 94%,
+    rgba(60, 110, 113, 0) 100%
   );
   padding: 0.3rem 0.5rem;
   display: block;
@@ -76,21 +76,21 @@ p {
 li {
   background: linear-gradient(
     104deg,
-    rgba(102, 155, 188, 0) 0.9%,
-    rgba(102, 155, 188, 0.5) 2.4%,
-    rgba(102, 155, 188, 0.5) 5.8%,
-    rgba(102, 155, 188, 0.4) 93%,
-    rgba(102, 155, 188, 0.5) 96%,
-    rgba(102, 155, 188, 0) 98%
+    rgba(60, 110, 113, 0) 0.9%,
+    rgba(60, 110, 113, 0.5) 2.4%,
+    rgba(60, 110, 113, 0.5) 5.8%,
+    rgba(60, 110, 113, 0.4) 93%,
+    rgba(60, 110, 113, 0.5) 96%,
+    rgba(60, 110, 113, 0) 98%
   ),
   linear-gradient(
     183deg,
-    rgba(102, 155, 188, 0) 0%,
-    rgba(102, 155, 188, 0.4) 7.9%,
-    rgba(102, 155, 188, 0.4) 15%,
-    rgba(102, 155, 188, 0.4) 78%,
-    rgba(102, 155, 188, 0.4) 94%,
-    rgba(102, 155, 188, 0) 100%
+    rgba(60, 110, 113, 0) 0%,
+    rgba(60, 110, 113, 0.4) 7.9%,
+    rgba(60, 110, 113, 0.4) 15%,
+    rgba(60, 110, 113, 0.4) 78%,
+    rgba(60, 110, 113, 0.4) 94%,
+    rgba(60, 110, 113, 0) 100%
   );
   padding: 0.3rem 0.5rem;
   margin-bottom: 1rem;
@@ -101,21 +101,21 @@ li {
 h1, h2, h3 {
   background: linear-gradient(
     104deg,
-    rgba(193, 18, 31, 0) 0.9%,
-    rgba(193, 18, 31, 0.6) 2.4%,
-    rgba(193, 18, 31, 0.5) 5.8%,
-    rgba(193, 18, 31, 0.5) 93%,
-    rgba(193, 18, 31, 0.6) 96%,
-    rgba(193, 18, 31, 0) 98%
+    rgba(40, 75, 99, 0) 0.9%,
+    rgba(40, 75, 99, 0.6) 2.4%,
+    rgba(40, 75, 99, 0.5) 5.8%,
+    rgba(40, 75, 99, 0.5) 93%,
+    rgba(40, 75, 99, 0.6) 96%,
+    rgba(40, 75, 99, 0) 98%
   ),
   linear-gradient(
     183deg,
-    rgba(193, 18, 31, 0) 0%,
-    rgba(193, 18, 31, 0.5) 7.9%,
-    rgba(193, 18, 31, 0.5) 15%,
-    rgba(193, 18, 31, 0.5) 78%,
-    rgba(193, 18, 31, 0.5) 94%,
-    rgba(193, 18, 31, 0) 100%
+    rgba(40, 75, 99, 0) 0%,
+    rgba(40, 75, 99, 0.5) 7.9%,
+    rgba(40, 75, 99, 0.5) 15%,
+    rgba(40, 75, 99, 0.5) 78%,
+    rgba(40, 75, 99, 0.5) 94%,
+    rgba(40, 75, 99, 0) 100%
   );
   padding: 0.5rem 0.7rem;
   display: block;
@@ -127,12 +127,12 @@ h1, h2, h3 {
 .tagline {
   background: linear-gradient(
     104deg,
-    rgba(120, 0, 0, 0) 0.9%,
-    rgba(120, 0, 0, 0.5) 2.4%,
-    rgba(120, 0, 0, 0.4) 5.8%,
-    rgba(120, 0, 0, 0.4) 93%,
-    rgba(120, 0, 0, 0.5) 96%,
-    rgba(120, 0, 0, 0) 98%
+    rgba(217, 217, 217, 0) 0.9%,
+    rgba(217, 217, 217, 0.5) 2.4%,
+    rgba(217, 217, 217, 0.4) 5.8%,
+    rgba(217, 217, 217, 0.4) 93%,
+    rgba(217, 217, 217, 0.5) 96%,
+    rgba(217, 217, 217, 0) 98%
   );
   padding: 0.3rem 0.5rem;
   display: block;
@@ -171,11 +171,11 @@ h3 {
 }
 
 .fellowship-box {
-  background: rgba(102, 155, 188, 0.1);
+  background: rgba(60, 110, 113, 0.1);
   padding: 2rem;
   border-radius: 8px;
   margin: 2rem 0;
-  border: 2px dashed rgba(102, 155, 188, 0.3);
+  border: 2px dashed rgba(60, 110, 113, 0.3);
 }
 
 .fellowship-box p {
@@ -208,7 +208,7 @@ li {
 }
 
 .team-member p {
-  color: var(--prussian-blue);
+  color: var(--jet);
   font-size: 0.9rem;
   text-transform: uppercase;
   display: block;
@@ -218,20 +218,20 @@ li {
 footer {
   margin-top: 5rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(102, 155, 188, 0.3);
+  border-top: 1px solid rgba(60, 110, 113, 0.3);
   font-size: 0.9rem;
-  color: var(--prussian-blue);
+  color: var(--jet);
 }
 
 footer p {
   background: linear-gradient(
     104deg,
-    rgba(102, 155, 188, 0) 0.9%,
-    rgba(102, 155, 188, 0.4) 2.4%,
-    rgba(102, 155, 188, 0.3) 5.8%,
-    rgba(102, 155, 188, 0.3) 93%,
-    rgba(102, 155, 188, 0.4) 96%,
-    rgba(102, 155, 188, 0) 98%
+    rgba(60, 110, 113, 0) 0.9%,
+    rgba(60, 110, 113, 0.4) 2.4%,
+    rgba(60, 110, 113, 0.3) 5.8%,
+    rgba(60, 110, 113, 0.3) 93%,
+    rgba(60, 110, 113, 0.4) 96%,
+    rgba(60, 110, 113, 0) 98%
   );
   padding: 0.3rem 0.5rem;
   display: block;
@@ -239,5 +239,5 @@ footer p {
 }
 
 footer a {
-  color: var(--prussian-blue);
+  color: var(--jet);
 }
