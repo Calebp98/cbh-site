@@ -6,7 +6,7 @@ const currentYear = new Date().getFullYear();
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cambridge Biosecurity Hub</title>
   </head>
 
@@ -141,6 +141,10 @@ const currentYear = new Date().getFullYear();
               data-bio="Grace is a medical doctor with a masters in public health. She now runs Cambridge Biosecurity Hub fulltime."
             />
             <p>Founder</p>
+            <p class="bio-text">
+              Grace is a medical doctor with a masters in public health. She now
+              runs Cambridge Biosecurity Hub fulltime.
+            </p>
           </div>
           <div class="team-member">
             <h3>Sandy Hickson</h3>
@@ -151,6 +155,10 @@ const currentYear = new Date().getFullYear();
               data-bio="Sandy is a PhD student in genetics and bioinformatics at the University of Cambridge."
             />
             <p>Founder</p>
+            <p class="bio-text">
+              Sandy is a PhD student in genetics and bioinformatics at the
+              University of Cambridge.
+            </p>
           </div>
           <div class="team-member">
             <h3>Dr Phil Palmer</h3>
@@ -161,6 +169,9 @@ const currentYear = new Date().getFullYear();
               data-bio="Phil has a PhD in bioinformatics from the University of Cambridge."
             />
             <p>Research Lead</p>
+            <p class="bio-text">
+              Phil has a PhD in bioinformatics from the University of Cambridge.
+            </p>
           </div>
           <div class="team-member">
             <h3>Dr Richard Moulange</h3>
@@ -171,6 +182,11 @@ const currentYear = new Date().getFullYear();
               data-bio="Richard has a PhD in machine learning from the University of Cambridge, and works on AIxBio Policy at the Centre for Long-Term Resilience - a think tank based in London."
             />
             <p>Research Affiliate</p>
+            <p class="bio-text">
+              Richard has a PhD in machine learning from the University of
+              Cambridge, and works on AIxBio Policy at the Centre for Long-Term
+              Resilience - a think tank based in London.
+            </p>
           </div>
         </div>
       </section>
@@ -396,17 +412,99 @@ const currentYear = new Date().getFullYear();
           }
         }
 
+        function showBubble(img: HTMLImageElement) {
+          // Remove any existing bubble
+          removeCurrentBubble();
+
+          const bio = img.getAttribute("data-bio");
+          if (!bio) return;
+
+          // Create new speech bubble
+          const bubble = document.createElement("div");
+          bubble.className = "speech-bubble";
+          bubble.textContent = bio;
+
+          // Add bubble to body for proper positioning
+          document.body.appendChild(bubble);
+
+          // Get image position
+          const imgRect = img.getBoundingClientRect();
+
+          // Position bubble
+          positionBubble(bubble, imgRect);
+
+          currentBubble = bubble;
+        }
+
         function positionBubble(bubble: HTMLElement, imgRect: DOMRect) {
           const viewportWidth = window.innerWidth;
           const viewportHeight = window.innerHeight;
           const margin = 20;
+          const isMobile = viewportWidth <= 768;
 
-          // Get actual bubble dimensions after it's rendered
+          // On mobile, use a simpler positioning approach
+          if (isMobile) {
+            bubble.classList.remove("tail-right", "tail-left");
+            bubble.classList.add("tail-bottom");
+
+            // Position above the image initially
+            let topPosition = imgRect.top - 200; // Use estimated height
+            let leftPosition = imgRect.left + imgRect.width / 2 - 125; // Center with estimated width
+
+            // Ensure bubble stays within viewport horizontally
+            if (leftPosition < margin) {
+              leftPosition = margin;
+            } else if (leftPosition + 250 > viewportWidth - margin) {
+              leftPosition = viewportWidth - 250 - margin;
+            }
+
+            bubble.style.left = `${leftPosition}px`;
+            bubble.style.top = `${topPosition}px`;
+
+            // Now get actual dimensions and adjust if needed
+            setTimeout(() => {
+              const bubbleRect = bubble.getBoundingClientRect();
+              const bubbleWidth = bubbleRect.width;
+              const bubbleHeight = bubbleRect.height;
+
+              // Only adjust if we got valid dimensions
+              if (bubbleWidth > 0 && bubbleHeight > 0) {
+                // Recalculate position with actual dimensions
+                let finalTopPosition = imgRect.top - bubbleHeight - 15;
+
+                // If not enough space above, position below
+                if (finalTopPosition < margin) {
+                  finalTopPosition = imgRect.bottom + 15;
+                  bubble.classList.remove("tail-bottom");
+                  bubble.classList.add("tail-top");
+                }
+
+                let finalLeftPosition =
+                  imgRect.left + imgRect.width / 2 - bubbleWidth / 2;
+
+                // Ensure bubble stays within viewport
+                if (finalLeftPosition < margin) {
+                  finalLeftPosition = margin;
+                } else if (
+                  finalLeftPosition + bubbleWidth >
+                  viewportWidth - margin
+                ) {
+                  finalLeftPosition = viewportWidth - bubbleWidth - margin;
+                }
+
+                bubble.style.left = `${finalLeftPosition}px`;
+                bubble.style.top = `${finalTopPosition}px`;
+              }
+            }, 50);
+
+            return;
+          }
+
+          // Desktop positioning logic
           const bubbleRect = bubble.getBoundingClientRect();
           const bubbleWidth = bubbleRect.width;
           const bubbleHeight = bubbleRect.height;
 
-          // Determine horizontal position
           const spaceOnRight = viewportWidth - imgRect.right;
           const showOnRight = spaceOnRight >= bubbleWidth + margin;
 
@@ -443,30 +541,25 @@ const currentYear = new Date().getFullYear();
 
           if (!bio) return;
 
-          img.addEventListener("mouseenter", function () {
-            // Remove any existing bubble
-            removeCurrentBubble();
+          // Check if device is mobile
+          const isMobile = window.innerWidth <= 768;
 
-            // Create new speech bubble
-            const bubble = document.createElement("div");
-            bubble.className = "speech-bubble";
-            bubble.textContent = bio;
+          // Only add speech bubble events on desktop
+          if (!isMobile) {
+            // Desktop hover events
+            img.addEventListener("mouseenter", function () {
+              showBubble(img);
+            });
 
-            // Add bubble to body for proper positioning
-            document.body.appendChild(bubble);
+            img.addEventListener("mouseleave", function () {
+              removeCurrentBubble();
+            });
 
-            // Get image position
-            const imgRect = img.getBoundingClientRect();
-
-            // Position bubble
-            positionBubble(bubble, imgRect);
-
-            currentBubble = bubble;
-          });
-
-          img.addEventListener("mouseleave", function () {
-            removeCurrentBubble();
-          });
+            // Click event for desktop
+            img.addEventListener("click", function (e) {
+              showBubble(img);
+            });
+          }
 
           // Remove bubble on scroll or resize
           img.addEventListener("scroll", removeCurrentBubble);
