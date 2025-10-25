@@ -513,7 +513,7 @@ footer a {
 /* Mask sketch as a separate element */
 .mask-sketch {
   position: absolute;
-  top: 410px;
+  top: 370px;
   right: 300px;
   width: 80px;
   height: 80px;
@@ -944,5 +944,177 @@ footer a {
 
   .cursor {
     font-size: 1rem;
+  }
+}
+
+/* Mailing List Banner Styles */
+.mailing-banner {
+  background: transparent;
+  color: var(--jet);
+  padding: 1rem 2rem;
+  position: relative;
+  z-index: 10;
+  border: 2px dotted #dc2626;
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 2rem;
+  padding-right: 3rem; /* Add space for close button */
+}
+
+.banner-text h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--white);
+}
+
+.banner-text p {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.banner-button {
+  background: var(--caribbean-current);
+  color: var(--white);
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.banner-button:hover {
+  background: var(--indigo-dye);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.banner-close {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--jet);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  opacity: 0.7;
+}
+
+.banner-close:hover {
+  background: rgba(220, 38, 38, 0.1);
+  opacity: 1;
+}
+
+/* Hide banner when closed */
+.mailing-banner.hidden {
+  display: none;
+}
+
+/* Mobile responsive styles for banner */
+@media (max-width: 768px) {
+  .mailing-banner {
+    padding: 1rem;
+  }
+  
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding-right: 2rem; /* Less padding on mobile */
+  }
+  
+  .banner-text h3 {
+    font-size: 1.2rem;
+  }
+  
+  .banner-text p {
+    font-size: 0.9rem;
+  }
+  
+  .banner-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  .banner-close {
+    right: 0.5rem;
+    top: 0.5rem;
+    transform: none;
+  }
+}
+
+/* Designer Credit Styles */
+.designer-credit {
+  text-align: right;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--platinum);
+}
+
+.designer-credit p {
+  font-size: 0.9rem;
+  color: var(--jet);
+  opacity: 0.7;
+  margin: 0;
+}
+
+.designer-credit a {
+  color: var(--caribbean-current);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.designer-credit a:hover {
+  color: var(--indigo-dye);
+  text-decoration: underline;
+}
+
+/* Mobile responsive for designer credit */
+@media (max-width: 768px) {
+  .designer-credit {
+    text-align: center;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+  
+  .designer-credit p {
+    font-size: 0.8rem;
+  }
+}
+
+/* CBH Description Styles */
+.cbh-description {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--caribbean-current);
+  background: transparent;
+  margin: 2rem 0;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Mobile responsive for CBH description */
+@media (max-width: 768px) {
+  .cbh-description {
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    line-height: 1.5;
   }
 }

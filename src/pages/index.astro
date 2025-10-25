@@ -12,6 +12,26 @@ const currentYear = new Date().getFullYear();
 
   <body>
     <div class="container">
+      <!-- Mailing List Banner -->
+      <div class="mailing-banner">
+        <div class="banner-content">
+          <div class="banner-text">
+            <h3>Join Our Mailing List</h3>
+            <p>
+              Stay updated on biosecurity research, events, and opportunities
+            </p>
+          </div>
+          <a
+            href="https://airtable.com/appaIHmOOcKdMRRwU/pagECavrg1fHWriWf/form"
+            target="_blank"
+            class="banner-button"
+          >
+            Sign Up Now
+          </a>
+        </div>
+        <button class="banner-close" aria-label="Close banner">&times;</button>
+      </div>
+
       <div class="mask-sketch"></div>
       <div class="far-uvc-sketch"></div>
       <div class="lab-robot-sketch"></div>
@@ -31,12 +51,10 @@ const currentYear = new Date().getFullYear();
       </header>
 
       <section>
-        <h2>About CBH</h2>
-        <p>
-          The Cambridge Biosecurity Hub (CBH) is a team of researchers
-          investigating and raising awareness of the risks associated with
-          rapidly developing biotechnologies. Our projects aim to make progress
-          on both technical and policy issues within biosecurity.
+        <p class="cbh-description">
+          Cambridge Biosecurity Hub (CBH) is a team of researchers mitigating
+          risks from emerging biotechnologies through field-building, research,
+          and policy.
         </p>
       </section>
 
@@ -201,10 +219,30 @@ const currentYear = new Date().getFullYear();
           reserved.
         </p>
         <p>
-          <a href="#">Code of Conduct</a> | <a href="#"
-            >Community Health reporting form</a
+          <a
+            href="https://docs.google.com/document/d/1CFYbwG6pk7IFZQGaJ_kjjFgLBL6DEOU-37cytMMzp8M/edit?tab=t.0"
+            target="_blank">Code of Conduct</a
+          > |
+          <a
+            href="https://airtable.com/apprENapaPZGahH6Q/pagJeUj3jByPSzIGu/form"
+            target="_blank">Community Incident Form</a
+          > |
+          <a
+            href="https://airtable.com/appaIHmOOcKdMRRwU/pagECavrg1fHWriWf/form"
+            target="_blank">CBH Mailing List Signup</a
+          > |
+          <a
+            href="https://www.linkedin.com/company/cambridge-biosecurity-hub/posts/?feedView=all"
+            target="_blank">LinkedIn</a
           >
         </p>
+        <div class="designer-credit">
+          <p>
+            Designed by <a href="https://calebp98.github.io/" target="_blank"
+              >Caleb Parikh</a
+            >
+          </p>
+        </div>
       </footer>
     </div>
 
@@ -568,6 +606,20 @@ const currentYear = new Date().getFullYear();
         // Remove bubble on window resize or scroll
         window.addEventListener("resize", removeCurrentBubble);
         window.addEventListener("scroll", removeCurrentBubble);
+
+        // Mailing banner close functionality
+        const bannerClose = document.querySelector(
+          ".banner-close"
+        ) as HTMLElement;
+        const mailingBanner = document.querySelector(
+          ".mailing-banner"
+        ) as HTMLElement;
+
+        if (bannerClose && mailingBanner) {
+          bannerClose.addEventListener("click", function () {
+            mailingBanner.classList.add("hidden");
+          });
+        }
       });
     </script>
   </body>
