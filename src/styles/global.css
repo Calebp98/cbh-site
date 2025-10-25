@@ -222,6 +222,7 @@ li {
   text-transform: uppercase;
   display: block;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .profile-image {
