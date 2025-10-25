@@ -259,10 +259,10 @@ footer a {
   color: var(--jet);
 }
 
-/* Background sketches with jaunty angles and fixed positioning */
+/* Background sketches with jaunty angles and absolute positioning */
 .container::before {
   content: '';
-  position: fixed;
+  position: absolute;
   top: 30px;
   left: 30px;
   width: 100px;
@@ -279,7 +279,7 @@ footer a {
 
 .container::after {
   content: '';
-  position: fixed;
+  position: absolute;
   bottom: 30px;
   right: 30px;
   width: 120px;
@@ -297,8 +297,8 @@ footer a {
 /* Add mask sketch using a pseudo-element on the body */
 body::after {
   content: '';
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 50vh;
   right: 40px;
   width: 80px;
   height: 80px;
