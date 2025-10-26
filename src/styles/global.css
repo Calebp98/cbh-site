@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   --jet: #353535ff;
@@ -26,23 +27,78 @@ body {
   
   line-height: 1.8;
   color: var(--jet);
-  background: linear-gradient(to bottom, var(--white) 0%, var(--white) 100%);
+  background: 
+    /* Grid background that scrolls */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 29px,
+      rgba(40, 75, 99, 0.03) 29px,
+      rgba(40, 75, 99, 0.03) 30px,
+      transparent 30px,
+      transparent 59px,
+      rgba(40, 75, 99, 0.03) 59px,
+      rgba(40, 75, 99, 0.03) 60px,
+      transparent 60px,
+      transparent 89px,
+      rgba(40, 75, 99, 0.03) 89px,
+      rgba(40, 75, 99, 0.03) 90px,
+      transparent 90px,
+      transparent 119px,
+      rgba(40, 75, 99, 0.03) 119px,
+      rgba(40, 75, 99, 0.03) 120px,
+      transparent 120px,
+      transparent 149px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 29px,
+      rgba(40, 75, 99, 0.03) 29px,
+      rgba(40, 75, 99, 0.03) 30px,
+      transparent 30px,
+      transparent 59px,
+      rgba(40, 75, 99, 0.03) 59px,
+      rgba(40, 75, 99, 0.03) 60px,
+      transparent 60px,
+      transparent 89px,
+      rgba(40, 75, 99, 0.03) 89px,
+      rgba(40, 75, 99, 0.03) 90px,
+      transparent 90px,
+      transparent 119px,
+      rgba(40, 75, 99, 0.03) 119px,
+      rgba(40, 75, 99, 0.03) 120px,
+      transparent 120px,
+      transparent 149px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 119px,
+      rgba(60, 180, 255, 0.25) 119px,
+      rgba(60, 180, 255, 0.25) 121px,
+      transparent 121px,
+      transparent 149px,
+      rgba(60, 180, 255, 0.25) 149px,
+      rgba(60, 180, 255, 0.25) 150px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 119px,
+      rgba(60, 180, 255, 0.25) 119px,
+      rgba(60, 180, 255, 0.25) 121px,
+      transparent 121px,
+      transparent 149px,
+      rgba(60, 180, 255, 0.25) 149px,
+      rgba(60, 180, 255, 0.25) 150px
+    ),
+    /* White background */
+    linear-gradient(to bottom, var(--white) 0%, var(--white) 100%);
+  background-size: 150px 150px, 150px 150px, 150px 150px, 150px 150px, auto;
   position: relative;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(rgba(40, 75, 99, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(40, 75, 99, 0.05) 1px, transparent 1px);
-  background-size: 30px 30px;
-  pointer-events: none;
-  z-index: 0;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 .container {
@@ -52,7 +108,6 @@ body::before {
   position: relative;
   z-index: 2;
   width: 100%;
-  overflow-x: hidden;
 }
 
 /* Highlighter/washi tape effect */
@@ -163,10 +218,21 @@ header {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 4rem;
+  color: #1e3a5f;
+  background: none !important;
   margin-bottom: 1rem;
-  border: 3px dashed #feca57;
+  border: none;
   padding: 0.5rem 0.7rem;
+}
+
+h1#title-text {
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 4rem;
+  color: #1e3a5f;
+  background: none !important;
+  border: none;
 }
 
 .tagline {
@@ -240,6 +306,7 @@ section {
   margin-bottom: 4rem;
   position: relative;
   z-index: 2;
+  overflow: visible;
 }
 
 h2 {
@@ -266,13 +333,15 @@ li {
 
 .team {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
 
 .team-member {
   text-align: center;
+  min-width: 0;
+  overflow: visible;
 }
 
 .team-member h3 {
@@ -324,6 +393,8 @@ li {
   position: relative;
   cursor: pointer;
   transition: transform 0.2s ease;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .profile-image:hover {
@@ -825,14 +896,14 @@ footer a {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
 
-  h1 {
-    font-size: 2rem;
-  }
+    h1 {
+      font-size: 2.5rem;
+    }
 
   h2 {
     font-size: 1.5rem;
@@ -904,14 +975,14 @@ footer a {
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0.75rem;
-  }
+  @media (max-width: 480px) {
+    .container {
+      padding: 0.75rem;
+    }
 
-  h1 {
-    font-size: 1.75rem;
-  }
+    h1 {
+      font-size: 2rem;
+    }
 
   h2 {
     font-size: 1.3rem;
