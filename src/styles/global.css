@@ -28,74 +28,106 @@ body {
   line-height: 1.8;
   color: var(--jet);
   background: 
-    /* Grid background that scrolls */
+    /* Grid background that scrolls - 18px intervals to align with text */
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 29px,
-      rgba(40, 75, 99, 0.03) 29px,
-      rgba(40, 75, 99, 0.03) 30px,
-      transparent 30px,
-      transparent 59px,
-      rgba(40, 75, 99, 0.03) 59px,
-      rgba(40, 75, 99, 0.03) 60px,
-      transparent 60px,
-      transparent 89px,
-      rgba(40, 75, 99, 0.03) 89px,
-      rgba(40, 75, 99, 0.03) 90px,
-      transparent 90px,
-      transparent 119px,
-      rgba(40, 75, 99, 0.03) 119px,
-      rgba(40, 75, 99, 0.03) 120px,
-      transparent 120px,
-      transparent 149px
+      transparent 17px,
+      rgba(40, 75, 99, 0.03) 17px,
+      rgba(40, 75, 99, 0.03) 18px,
+      transparent 18px,
+      transparent 35px,
+      rgba(40, 75, 99, 0.03) 35px,
+      rgba(40, 75, 99, 0.03) 36px,
+      transparent 36px,
+      transparent 53px,
+      rgba(40, 75, 99, 0.03) 53px,
+      rgba(40, 75, 99, 0.03) 54px,
+      transparent 54px,
+      transparent 71px,
+      rgba(40, 75, 99, 0.03) 71px,
+      rgba(40, 75, 99, 0.03) 72px,
+      transparent 72px,
+      transparent 107px,
+      rgba(40, 75, 99, 0.03) 107px,
+      rgba(40, 75, 99, 0.03) 108px,
+      transparent 108px,
+      transparent 125px,
+      rgba(40, 75, 99, 0.03) 125px,
+      rgba(40, 75, 99, 0.03) 126px,
+      transparent 126px,
+      transparent 143px,
+      rgba(40, 75, 99, 0.03) 143px,
+      rgba(40, 75, 99, 0.03) 144px,
+      transparent 144px,
+      transparent 161px,
+      rgba(40, 75, 99, 0.03) 161px,
+      rgba(40, 75, 99, 0.03) 162px,
+      transparent 162px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 29px,
-      rgba(40, 75, 99, 0.03) 29px,
-      rgba(40, 75, 99, 0.03) 30px,
-      transparent 30px,
-      transparent 59px,
-      rgba(40, 75, 99, 0.03) 59px,
-      rgba(40, 75, 99, 0.03) 60px,
-      transparent 60px,
-      transparent 89px,
-      rgba(40, 75, 99, 0.03) 89px,
-      rgba(40, 75, 99, 0.03) 90px,
-      transparent 90px,
-      transparent 119px,
-      rgba(40, 75, 99, 0.03) 119px,
-      rgba(40, 75, 99, 0.03) 120px,
-      transparent 120px,
-      transparent 149px
+      transparent 17px,
+      rgba(40, 75, 99, 0.03) 17px,
+      rgba(40, 75, 99, 0.03) 18px,
+      transparent 18px,
+      transparent 35px,
+      rgba(40, 75, 99, 0.03) 35px,
+      rgba(40, 75, 99, 0.03) 36px,
+      transparent 36px,
+      transparent 53px,
+      rgba(40, 75, 99, 0.03) 53px,
+      rgba(40, 75, 99, 0.03) 54px,
+      transparent 54px,
+      transparent 71px,
+      rgba(40, 75, 99, 0.03) 71px,
+      rgba(40, 75, 99, 0.03) 72px,
+      transparent 72px,
+      transparent 107px,
+      rgba(40, 75, 99, 0.03) 107px,
+      rgba(40, 75, 99, 0.03) 108px,
+      transparent 108px,
+      transparent 125px,
+      rgba(40, 75, 99, 0.03) 125px,
+      rgba(40, 75, 99, 0.03) 126px,
+      transparent 126px,
+      transparent 143px,
+      rgba(40, 75, 99, 0.03) 143px,
+      rgba(40, 75, 99, 0.03) 144px,
+      transparent 144px,
+      transparent 161px,
+      rgba(40, 75, 99, 0.03) 161px,
+      rgba(40, 75, 99, 0.03) 162px,
+      transparent 162px
     ),
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 119px,
-      rgba(60, 180, 255, 0.25) 119px,
-      rgba(60, 180, 255, 0.25) 121px,
-      transparent 121px,
-      transparent 149px,
-      rgba(60, 180, 255, 0.25) 149px,
-      rgba(60, 180, 255, 0.25) 150px
+      transparent 143px,
+      rgba(60, 180, 255, 0.25) 143px,
+      rgba(60, 180, 255, 0.25) 144px,
+      transparent 144px,
+      transparent 161px,
+      rgba(60, 180, 255, 0.25) 161px,
+      rgba(60, 180, 255, 0.25) 162px,
+      transparent 162px
     ),
     repeating-linear-gradient(
       90deg,
       transparent,
-      transparent 119px,
-      rgba(60, 180, 255, 0.25) 119px,
-      rgba(60, 180, 255, 0.25) 121px,
-      transparent 121px,
-      transparent 149px,
-      rgba(60, 180, 255, 0.25) 149px,
-      rgba(60, 180, 255, 0.25) 150px
+      transparent 143px,
+      rgba(60, 180, 255, 0.25) 143px,
+      rgba(60, 180, 255, 0.25) 144px,
+      transparent 144px,
+      transparent 161px,
+      rgba(60, 180, 255, 0.25) 161px,
+      rgba(60, 180, 255, 0.25) 162px,
+      transparent 162px
     ),
     /* White background */
     linear-gradient(to bottom, var(--white) 0%, var(--white) 100%);
-  background-size: 150px 150px, 150px 150px, 150px 150px, 150px 150px, auto;
+  background-size: 162px 162px, 162px 162px, 162px 162px, 162px 162px, auto;
   position: relative;
   overflow-x: hidden;
   overflow-y: visible;
@@ -244,36 +276,18 @@ h1#title-text {
 .typing-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   margin-bottom: 1rem;
   min-height: 2rem;
 }
 
-.typing-text {
+.tagline-text {
   background: none;
   color: var(--jet);
   padding: 0;
   font-size: 1.2rem;
   display: inline-block;
-}
-
-.cursor {
-  color: var(--jet);
-  font-size: 1.2rem;
-  font-weight: bold;
-  animation: blink 0.8s infinite;
-  margin-left: 3px;
-  background: none;
-  padding: 0;
-}
-
-@keyframes blink {
-  0%, 50% {
-    opacity: 1;
-  }
-  51%, 100% {
-    opacity: 0;
-  }
+  text-align: center;
 }
 
 /* Base pair colors */
@@ -345,12 +359,16 @@ li {
 }
 
 .team-member h3 {
+  font-family: 'Libre Caslon Text', serif;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+  color: #1e3a5f;
+  background: none !important;
+  padding: 0 !important;
 }
 
 .team-member p {
-  color: var(--jet);
+  color: var(--white);
   font-size: 0.9rem;
   text-transform: uppercase;
   display: block;
@@ -1009,11 +1027,7 @@ footer a {
     height: 100px;
   }
 
-  .typing-text {
-    font-size: 1rem;
-  }
-
-  .cursor {
+  .tagline-text {
     font-size: 1rem;
   }
 }
