@@ -368,9 +368,13 @@ li {
   font-family: 'Libre Caslon Text', serif;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
   color: #1e3a5f;
   background: none !important;
   padding: 0 !important;
+  text-align: center;
+  width: fit-content;
 }
 
 .team-member p {
