@@ -44,8 +44,7 @@ const currentYear = new Date().getFullYear();
       <header>
         <h1 id="title-text">Cambridge Biosecurity Hub</h1>
         <div class="typing-container">
-          <span class="typing-text"></span>
-          <span class="cursor">|</span>
+          <span class="tagline-text"></span>
         </div>
       </header>
 
@@ -247,34 +246,22 @@ const currentYear = new Date().getFullYear();
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // DNA Transcription animation for all headers
-        const headers = document.querySelectorAll(
-          "h1, h2, h3"
-        ) as NodeListOf<HTMLElement>;
+        // DNA Transcription animation for tagline only
+        const taglineText = document.querySelector(
+          ".tagline-text"
+        ) as HTMLElement;
+        const taglines = [
+          "Safeguarding Biological Research.",
+          "Working to usher in a future of safe and transformative biotechnologies.",
+        ];
+        let taglineIndex = 0;
         const dnaBases = ["A", "C", "G", "T"];
         const rnaBases = ["A", "C", "G", "U"];
 
-        let headerAnimations: Array<{
-          element: HTMLElement;
-          targetText: string;
-          currentSequence: string[];
-          targetChars: string[];
-          animationIndex: number;
-        }> = [];
-
-        // Initialize animations for each header
-        headers.forEach((header, index) => {
-          const targetText = header.textContent || "";
-          headerAnimations.push({
-            element: header,
-            targetText: targetText,
-            currentSequence: [],
-            targetChars: targetText.split(""),
-            animationIndex: 0,
-          });
-        });
-
+        let currentSequence: string[] = [];
+        let animationIndex = 0;
         let titleAnimationSpeed = 250; // More movement - changes every 250ms (4 times per second)
+        let pauseTime = 3000; // Pause before switching to next tagline
 
         function generateRandomSequence(
           targetText: string,
@@ -301,119 +288,55 @@ const currentYear = new Date().getFullYear();
         }
 
         function dnaTranscription() {
-          let allComplete = true;
+          const taglineMessage = taglines[taglineIndex];
+          const targetChars = taglineMessage.split("");
 
-          headerAnimations.forEach((animation, headerIndex) => {
-            const { element, targetText, targetChars } = animation;
-
-            if (animation.animationIndex === 0) {
-              // Start with DNA sequence
-              animation.currentSequence = generateRandomSequence(
-                targetText,
-                dnaBases
+          if (animationIndex === 0) {
+            // Start with DNA sequence
+            currentSequence = generateRandomSequence(taglineMessage, dnaBases);
+            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
+          } else if (animationIndex === 1) {
+            // Another DNA sequence variation
+            currentSequence = generateRandomSequence(taglineMessage, dnaBases);
+            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
+          } else if (animationIndex === 2) {
+            // Convert to RNA
+            currentSequence = currentSequence.map((base) =>
+              base === "T" ? "U" : base
+            );
+            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
+          } else if (animationIndex === 3) {
+            // Another RNA variation
+            currentSequence = generateRandomSequence(taglineMessage, rnaBases);
+            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
+          } else if (animationIndex === 4) {
+            // Start introducing target characters
+            const halfLength = Math.floor(targetChars.length / 2);
+            for (let i = 0; i < halfLength; i++) {
+              const randomIndex = Math.floor(
+                Math.random() * currentSequence.length
               );
-              element.innerHTML = wrapBasesWithColors(
-                animation.currentSequence
-              );
-            } else if (animation.animationIndex === 1) {
-              // Another DNA sequence variation
-              animation.currentSequence = generateRandomSequence(
-                targetText,
-                dnaBases
-              );
-              element.innerHTML = wrapBasesWithColors(
-                animation.currentSequence
-              );
-            } else if (animation.animationIndex === 2) {
-              // Convert to RNA
-              animation.currentSequence = animation.currentSequence.map(
-                (base) => (base === "T" ? "U" : base)
-              );
-              element.innerHTML = wrapBasesWithColors(
-                animation.currentSequence
-              );
-            } else if (animation.animationIndex === 3) {
-              // Another RNA variation
-              animation.currentSequence = generateRandomSequence(
-                targetText,
-                rnaBases
-              );
-              element.innerHTML = wrapBasesWithColors(
-                animation.currentSequence
-              );
-            } else if (animation.animationIndex === 4) {
-              // Start introducing target characters
-              const halfLength = Math.floor(targetChars.length / 2);
-              for (let i = 0; i < halfLength; i++) {
-                const randomIndex = Math.floor(
-                  Math.random() * animation.currentSequence.length
-                );
-                animation.currentSequence[randomIndex] =
-                  targetChars[randomIndex];
-              }
-              element.innerHTML = wrapBasesWithColors(
-                animation.currentSequence
-              );
-            } else if (animation.animationIndex === 5) {
-              // Final result
-              element.textContent = targetText;
-              return; // This header is complete
+              currentSequence[randomIndex] = targetChars[randomIndex];
             }
-
-            animation.animationIndex++;
-            allComplete = false;
-          });
-
-          if (!allComplete) {
-            setTimeout(dnaTranscription, titleAnimationSpeed);
+            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
+          } else if (animationIndex === 5) {
+            // Final result
+            taglineText.textContent = taglineMessage;
+            // Wait before switching to next tagline
+            setTimeout(() => {
+              animationIndex = 0;
+              taglineIndex = (taglineIndex + 1) % taglines.length;
+              dnaTranscription();
+            }, pauseTime);
+            return; // This message complete
           }
+
+          animationIndex++;
+          setTimeout(dnaTranscription, titleAnimationSpeed);
         }
 
-        // Start DNA transcription animation for all headers
+        // Start DNA transcription animation for tagline
         dnaTranscription();
-
-        // Typing animation for slogan
-        const typingText = document.querySelector(
-          ".typing-text"
-        ) as HTMLElement;
-        const texts = [
-          "Safeguarding Biological Research.",
-          "Working to usher in a future of safe and transformative biotechnologies.",
-        ];
-
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 33; // 3x faster (100ms -> 33ms)
-        let deleteSpeed = 16; // 3x faster (50ms -> 16ms)
-        let pauseTime = 3000; // 3x longer pause before deleting
-
-        function typeText() {
-          const currentText = texts[textIndex];
-
-          if (isDeleting) {
-            // Delete entire line at once
-            typingText.textContent = "";
-            charIndex = 0;
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            typingSpeed = 200; // Short pause before next text
-          } else {
-            typingText.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 33; // Fast typing
-          }
-
-          if (!isDeleting && charIndex === currentText.length) {
-            typingSpeed = pauseTime;
-            isDeleting = true;
-          }
-
-          setTimeout(typeText, typingSpeed);
-        }
-
-        // Start typing animation for slogan
-        typeText();
 
         // Project cards functionality
         const projectCards = document.querySelectorAll(".project-card");
