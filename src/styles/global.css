@@ -1065,6 +1065,8 @@ footer a {
   border-bottom: 1px solid var(--platinum);
   margin: 30px auto;
   max-width: 900px;
+  width: 100%;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
