@@ -31,7 +31,6 @@ const currentYear = new Date().getFullYear();
         >
           Join our mailing list →
         </a>
-        <button class="banner-close" aria-label="Close banner">&times;</button>
       </div>
 
       <div class="mask-sketch"></div>
@@ -45,7 +44,7 @@ const currentYear = new Date().getFullYear();
       <div class="sequencer-sketch"></div>
       <div class="test-tubes-sketch"></div>
       <header>
-        <h1 id="title-text">Cambridge Biosecurity Hub</h1>
+        <h1 id="title-text"><span class="title-text-animated"></span></h1>
         <div class="typing-container">
           <span class="tagline-text"></span>
         </div>
@@ -194,6 +193,13 @@ const currentYear = new Date().getFullYear();
         </div>
       </section>
 
+      <section>
+        <p class="contact-description">
+          For inquiries, please contact{" "}
+          <a href="mailto:grace@cambiohub.org">grace@cambiohub.org</a>
+        </p>
+      </section>
+
       <footer>
         <p>
           CBH is a project of the community interest company registered as
@@ -233,22 +239,9 @@ const currentYear = new Date().getFullYear();
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // DNA Transcription animation for tagline only
-        const taglineText = document.querySelector(
-          ".tagline-text"
-        ) as HTMLElement;
-        const taglines = [
-          "Safeguarding Biological Research.",
-          "Working to usher in a future of safe and transformative biotechnologies.",
-        ];
-        let taglineIndex = 0;
+        // DNA bases
         const dnaBases = ["A", "C", "G", "T"];
         const rnaBases = ["A", "C", "G", "U"];
-
-        let currentSequence: string[] = [];
-        let animationIndex = 0;
-        let titleAnimationSpeed = 250; // More movement - changes every 250ms (4 times per second)
-        let pauseTime = 3000; // Pause before switching to next tagline
 
         function generateRandomSequence(
           targetText: string,
@@ -274,56 +267,144 @@ const currentYear = new Date().getFullYear();
             .join("");
         }
 
-        function dnaTranscription() {
-          const taglineMessage = taglines[taglineIndex];
-          const targetChars = taglineMessage.split("");
+        // DNA Transcription animation for title
+        const titleText = document.querySelector(
+          ".title-text-animated"
+        ) as HTMLElement;
+        const titleMessage = "Cambridge Biosecurity Hub";
+        let titleCurrentSequence: string[] = [];
+        let titleAnimationIndex = 0;
+        const titleAnimationSpeed = 250;
+        const titlePauseTime = 2000;
 
-          if (animationIndex === 0) {
+        function titleDnaTranscription() {
+          const targetChars = titleMessage.split("");
+
+          if (titleAnimationIndex === 0) {
             // Start with DNA sequence
-            currentSequence = generateRandomSequence(taglineMessage, dnaBases);
-            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
-          } else if (animationIndex === 1) {
+            titleCurrentSequence = generateRandomSequence(
+              titleMessage,
+              dnaBases
+            );
+            titleText.innerHTML = wrapBasesWithColors(titleCurrentSequence);
+          } else if (titleAnimationIndex === 1) {
             // Another DNA sequence variation
-            currentSequence = generateRandomSequence(taglineMessage, dnaBases);
-            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
-          } else if (animationIndex === 2) {
+            titleCurrentSequence = generateRandomSequence(
+              titleMessage,
+              dnaBases
+            );
+            titleText.innerHTML = wrapBasesWithColors(titleCurrentSequence);
+          } else if (titleAnimationIndex === 2) {
             // Convert to RNA
-            currentSequence = currentSequence.map((base) =>
+            titleCurrentSequence = titleCurrentSequence.map((base) =>
               base === "T" ? "U" : base
             );
-            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
-          } else if (animationIndex === 3) {
+            titleText.innerHTML = wrapBasesWithColors(titleCurrentSequence);
+          } else if (titleAnimationIndex === 3) {
             // Another RNA variation
-            currentSequence = generateRandomSequence(taglineMessage, rnaBases);
-            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
-          } else if (animationIndex === 4) {
+            titleCurrentSequence = generateRandomSequence(
+              titleMessage,
+              rnaBases
+            );
+            titleText.innerHTML = wrapBasesWithColors(titleCurrentSequence);
+          } else if (titleAnimationIndex === 4) {
             // Start introducing target characters
             const halfLength = Math.floor(targetChars.length / 2);
             for (let i = 0; i < halfLength; i++) {
               const randomIndex = Math.floor(
-                Math.random() * currentSequence.length
+                Math.random() * titleCurrentSequence.length
               );
-              currentSequence[randomIndex] = targetChars[randomIndex];
+              titleCurrentSequence[randomIndex] = targetChars[randomIndex];
             }
-            taglineText.innerHTML = wrapBasesWithColors(currentSequence);
-          } else if (animationIndex === 5) {
+            titleText.innerHTML = wrapBasesWithColors(titleCurrentSequence);
+          } else if (titleAnimationIndex === 5) {
+            // Final result
+            titleText.textContent = titleMessage;
+            return; // Title animation complete
+          }
+
+          titleAnimationIndex++;
+          setTimeout(titleDnaTranscription, titleAnimationSpeed);
+        }
+
+        // Start DNA transcription animation for title
+        titleDnaTranscription();
+
+        // DNA Transcription animation for tagline
+        const taglineText = document.querySelector(
+          ".tagline-text"
+        ) as HTMLElement;
+        const taglines = [
+          "Safeguarding Biological Research.",
+          "Working to usher in a future of safe and transformative biotechnologies.",
+        ];
+        let taglineIndex = 0;
+        let taglineCurrentSequence: string[] = [];
+        let taglineAnimationIndex = 0;
+        const taglineAnimationSpeed = 250;
+        const taglinePauseTime = 3000;
+
+        function taglineDnaTranscription() {
+          const taglineMessage = taglines[taglineIndex];
+          const targetChars = taglineMessage.split("");
+
+          if (taglineAnimationIndex === 0) {
+            // Start with DNA sequence
+            taglineCurrentSequence = generateRandomSequence(
+              taglineMessage,
+              dnaBases
+            );
+            taglineText.innerHTML = wrapBasesWithColors(taglineCurrentSequence);
+          } else if (taglineAnimationIndex === 1) {
+            // Another DNA sequence variation
+            taglineCurrentSequence = generateRandomSequence(
+              taglineMessage,
+              dnaBases
+            );
+            taglineText.innerHTML = wrapBasesWithColors(taglineCurrentSequence);
+          } else if (taglineAnimationIndex === 2) {
+            // Convert to RNA
+            taglineCurrentSequence = taglineCurrentSequence.map((base) =>
+              base === "T" ? "U" : base
+            );
+            taglineText.innerHTML = wrapBasesWithColors(taglineCurrentSequence);
+          } else if (taglineAnimationIndex === 3) {
+            // Another RNA variation
+            taglineCurrentSequence = generateRandomSequence(
+              taglineMessage,
+              rnaBases
+            );
+            taglineText.innerHTML = wrapBasesWithColors(taglineCurrentSequence);
+          } else if (taglineAnimationIndex === 4) {
+            // Start introducing target characters
+            const halfLength = Math.floor(targetChars.length / 2);
+            for (let i = 0; i < halfLength; i++) {
+              const randomIndex = Math.floor(
+                Math.random() * taglineCurrentSequence.length
+              );
+              taglineCurrentSequence[randomIndex] = targetChars[randomIndex];
+            }
+            taglineText.innerHTML = wrapBasesWithColors(taglineCurrentSequence);
+          } else if (taglineAnimationIndex === 5) {
             // Final result
             taglineText.textContent = taglineMessage;
             // Wait before switching to next tagline
             setTimeout(() => {
-              animationIndex = 0;
+              taglineAnimationIndex = 0;
               taglineIndex = (taglineIndex + 1) % taglines.length;
-              dnaTranscription();
-            }, pauseTime);
+              taglineDnaTranscription();
+            }, taglinePauseTime);
             return; // This message complete
           }
 
-          animationIndex++;
-          setTimeout(dnaTranscription, titleAnimationSpeed);
+          taglineAnimationIndex++;
+          setTimeout(taglineDnaTranscription, taglineAnimationSpeed);
         }
 
-        // Start DNA transcription animation for tagline
-        dnaTranscription();
+        // Start DNA transcription animation for tagline after a delay
+        setTimeout(() => {
+          taglineDnaTranscription();
+        }, 2000);
 
         // Project cards functionality
         const projectCards = document.querySelectorAll(".project-card");
@@ -450,20 +531,6 @@ const currentYear = new Date().getFullYear();
         // Remove bubble on window resize or scroll
         window.addEventListener("resize", removeCurrentBubble);
         window.addEventListener("scroll", removeCurrentBubble);
-
-        // Mailing banner close functionality
-        const bannerClose = document.querySelector(
-          ".banner-close"
-        ) as HTMLElement;
-        const mailingBanner = document.querySelector(
-          ".mailing-banner"
-        ) as HTMLElement;
-
-        if (bannerClose && mailingBanner) {
-          bannerClose.addEventListener("click", function () {
-            mailingBanner.classList.add("hidden");
-          });
-        }
       });
     </script>
   </body>

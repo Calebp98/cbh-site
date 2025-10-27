@@ -131,6 +131,7 @@ body {
   position: relative;
   overflow-x: hidden;
   overflow-y: visible;
+  padding-top: 50px; /* Space for fixed banner */
 }
 
 .container {
@@ -269,6 +270,14 @@ h1#title-text {
   border: none;
 }
 
+.title-text-animated {
+  background: none;
+  color: #1e3a5f;
+  padding: 0;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 4rem;
+}
+
 .tagline {
   font-size: 1.2rem;
   color: #FFFFFF;
@@ -324,6 +333,16 @@ section {
   position: relative;
   z-index: 2;
   overflow: visible;
+}
+
+section a {
+  color: var(--caribbean-current);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+section a:hover {
+  color: var(--indigo-dye);
 }
 
 h2 {
@@ -929,6 +948,10 @@ footer a {
       margin: 0 auto 1rem;
     }
 
+    .title-text-animated {
+      font-size: 2.5rem;
+    }
+
   h2 {
     font-size: 1.5rem;
     text-align: center;
@@ -1016,6 +1039,10 @@ footer a {
       margin: 0 auto 1rem;
     }
 
+    .title-text-animated {
+      font-size: 2rem;
+    }
+
   h2 {
     font-size: 1.3rem;
     text-align: center;
@@ -1056,27 +1083,27 @@ footer a {
 
 /* Mailing List Banner Styles */
 .mailing-banner {
-  background: transparent;
+  background: var(--white);
   color: var(--jet);
   padding: 12px 30px;
-  position: relative;
-  z-index: 10;
-  border-top: 1px solid var(--platinum);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   border-bottom: 1px solid var(--platinum);
-  margin: 30px auto;
-  max-width: 900px;
-  width: 100%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .banner-link {
   color: var(--jet);
   text-decoration: none;
   font-size: 0.95rem;
-  padding-right: 2rem;
   transition: opacity 0.2s ease;
 }
 
@@ -1084,46 +1111,14 @@ footer a {
   opacity: 0.7;
 }
 
-.banner-close {
-  position: absolute;
-  top: 50%;
-  right: 1rem;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: var(--jet);
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 0.25rem;
-  transition: opacity 0.2s ease;
-  opacity: 0.5;
-  line-height: 1;
-}
-
-.banner-close:hover {
-  opacity: 1;
-}
-
-/* Hide banner when closed */
-.mailing-banner.hidden {
-  display: none;
-}
-
 /* Mobile responsive styles for banner */
 @media (max-width: 768px) {
   .mailing-banner {
     padding: 15px 20px;
-    margin: 20px auto;
   }
   
   .banner-link {
     font-size: 0.85rem;
-    padding-right: 1.5rem;
-  }
-  
-  .banner-close {
-    font-size: 1rem;
-    right: 0.5rem;
   }
 }
 
@@ -1180,6 +1175,44 @@ footer a {
 /* Mobile responsive for CBH description */
 @media (max-width: 768px) {
   .cbh-description {
+    font-size: 1.1rem;
+    margin: 30px 0;
+    line-height: 1.5;
+  }
+}
+
+/* Contact Description Styles */
+.contact-description {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--caribbean-current);
+  background: transparent;
+  margin: 2rem auto;
+  line-height: 1.6;
+  font-weight: 400;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+.contact-description a {
+  color: var(--white);
+  text-decoration: underline;
+  transition: opacity 0.3s ease;
+  background: rgba(60, 110, 113, 0.8);
+  padding: 2px 6px;
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.contact-description a:hover {
+  opacity: 0.8;
+}
+
+/* Mobile responsive for contact description */
+@media (max-width: 768px) {
+  .contact-description {
     font-size: 1.1rem;
     margin: 30px 0;
     line-height: 1.5;
