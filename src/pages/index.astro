@@ -93,6 +93,24 @@ const currentYear = new Date().getFullYear();
               </p>
             </div>
           </div>
+
+          <div class="project-card" data-color="forest-green">
+            <div class="project-header">
+              <h4>Biosecurity Reading Group</h4>
+              <button class="expand-btn" aria-label="Expand project details">
+                <span class="expand-icon">+</span>
+              </button>
+            </div>
+            <div class="project-content">
+              <p>
+                Our core group meets weekly on Mondays to discuss current
+                biosecurity news and developments.
+              </p>
+              <p>
+                <strong>Committed members are welcome to ask to join.</strong>
+              </p>
+            </div>
+          </div>
         </div>
 
         <h3 class="previous-projects-title">Previous Projects:</h3>
@@ -189,6 +207,140 @@ const currentYear = new Date().getFullYear();
               data-bio="Richard has a PhD in machine learning from the University of Cambridge, and works on AIxBio Policy at the Centre for Long-Term Resilience - a think tank based in London."
             />
             <p>Research Affiliate</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+          <h3 class="faq-category">Biosecurity and CBH</h3>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h4>What is biosecurity?</h4>
+              <button class="faq-btn" aria-label="Expand question">
+                <span class="faq-icon">+</span>
+              </button>
+            </div>
+            <div class="faq-content">
+              <p>
+                Biosecurity involves protecting against biological threats -
+                both naturally occurring and human-caused. This includes
+                preventing pandemics, ensuring safe use of biotechnology, and
+                managing risks from emerging capabilities like AI-enabled
+                biological design.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h4>Why does biosecurity matter right now?</h4>
+              <button class="faq-btn" aria-label="Expand question">
+                <span class="faq-icon">+</span>
+              </button>
+            </div>
+            <div class="faq-content">
+              <p>
+                Recent advances in AI and gene synthesis are making powerful
+                biological tools more accessible than ever. What once required
+                expert labs can increasingly be done with commercially available
+                equipment and AI assistance, creating new risks that need
+                proactive governance.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h4>
+                What makes CBH different from other biosecurity organizations?
+              </h4>
+              <button class="faq-btn" aria-label="Expand question">
+                <span class="faq-icon">+</span>
+              </button>
+            </div>
+            <div class="faq-content">
+              <p>
+                CBH focuses on building the biosecurity field in Cambridge and
+                the UK through grassroots community building, connecting
+                researchers across disciplines, and translating technical
+                insights into policy recommendations. We emphasize practical,
+                action-oriented work.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h4>What kind of research does CBH do?</h4>
+              <button class="faq-btn" aria-label="Expand question">
+                <span class="faq-icon">+</span>
+              </button>
+            </div>
+            <div class="faq-content">
+              <p>
+                We focus on applied research that informs policy and practice -
+                things like evaluating AI biosecurity risks, analyzing lab
+                safety protocols, and developing frameworks for responsible
+                biotechnology governance. Much of our work involves synthesizing
+                existing research and identifying key gaps.
+              </p>
+            </div>
+          </div>
+
+          <h3 class="faq-category">Getting Involved</h3>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h4>I'm a student/researcher - how can I get involved?</h4>
+              <button class="faq-btn" aria-label="Expand question">
+                <span class="faq-icon">+</span>
+              </button>
+            </div>
+            <div class="faq-content">
+              <p>
+                Join our mailing list to hear about reading groups, research
+                sprints, and fellowship opportunities. Our Monday reading group
+                is open to committed members who want to engage regularly with
+                current biosecurity topics.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h4>Do I need a biology background to work in biosecurity?</h4>
+              <button class="faq-btn" aria-label="Expand question">
+                <span class="faq-icon">+</span>
+              </button>
+            </div>
+            <div class="faq-content">
+              <p>
+                No! Biosecurity needs expertise from computer science, policy,
+                law, engineering, ethics, and many other fields. Understanding
+                the intersection of technology and governance is often more
+                valuable than deep biological expertise alone.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h4>What's the time commitment for CBH activities?</h4>
+              <button class="faq-btn" aria-label="Expand question">
+                <span class="faq-icon">+</span>
+              </button>
+            </div>
+            <div class="faq-content">
+              <p>
+                This varies - our reading groups meet weekly for ~2 hours,
+                research sprints are intensive 2-4 week projects, and the AIxBio
+                Fellowship is a more substantial multi-month commitment. We try
+                to offer options for different engagement levels.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -420,6 +572,30 @@ const currentYear = new Date().getFullYear();
             card.classList.toggle("expanded");
 
             if (card.classList.contains("expanded")) {
+              icon.textContent = "−";
+              content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+              icon.textContent = "+";
+              content.style.maxHeight = "0";
+            }
+          });
+        });
+
+        // FAQ functionality
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const content = item.querySelector(".faq-content") as HTMLElement;
+          const icon = item.querySelector(".faq-icon") as HTMLElement;
+
+          // Set initial state - collapsed
+          content.style.maxHeight = "0";
+          item.classList.add("collapsed");
+
+          item.addEventListener("click", function (event) {
+            item.classList.toggle("expanded");
+
+            if (item.classList.contains("expanded")) {
               icon.textContent = "−";
               content.style.maxHeight = content.scrollHeight + "px";
             } else {
